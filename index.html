@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff4f2">
+    <title>For Farah, With All My Love</title>
+    <style>
+        :root {
+            --rose: #c84b68;
+            --deep-rose: #8d2949;
+            --ink: #4e2635;
+            --muted: #856974;
+            --paper: rgba(255, 255, 255, 0.78);
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 32px 18px;
+            display: grid;
+            place-items: center;
+            overflow-x: hidden;
+            color: var(--ink);
+            font-family: Georgia, 'Times New Roman', serif;
+            background:
+                radial-gradient(ellipse at 15% 15%, rgba(255, 214, 210, .8), transparent 38%),
+                radial-gradient(ellipse at 90% 85%, rgba(249, 195, 204, .75), transparent 42%),
+                linear-gradient(135deg, #fff9f3, #fce8e8 52%, #fff2e9);
+        }
+
+        .sparkle {
+            position: fixed;
+            z-index: 0;
+            color: rgba(200, 75, 104, .22);
+            pointer-events: none;
+            animation: drift 9s ease-in-out infinite;
+        }
+        .sparkle:nth-child(1) { top: 12%; left: 9%; font-size: 27px; }
+        .sparkle:nth-child(2) { top: 24%; right: 11%; font-size: 19px; animation-delay: -3s; }
+        .sparkle:nth-child(3) { bottom: 13%; left: 16%; font-size: 21px; animation-delay: -6s; }
+        .sparkle:nth-child(4) { right: 8%; bottom: 20%; font-size: 30px; animation-delay: -2s; }
+
+        @keyframes drift {
+            0%, 100% { transform: translateY(0) rotate(-8deg); }
+            50% { transform: translateY(-13px) rotate(8deg); }
+        }
+
+        .app {
+            position: relative;
+            z-index: 1;
+            width: min(100%, 720px);
+            padding: clamp(28px, 6vw, 62px);
+            text-align: center;
+            background: var(--paper);
+            border: 1px solid rgba(255, 255, 255, .9);
+            border-radius: 30px;
+            box-shadow: 0 24px 80px rgba(124, 49, 70, .14), 0 3px 12px rgba(124, 49, 70, .06);
+            backdrop-filter: blur(12px);
+            animation: appear .9s ease-out both;
+        }
+
+        @keyframes appear {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .eyebrow {
+            margin: 0 0 19px;
+            color: var(--rose);
+            font: 600 .75rem/1.4 Arial, sans-serif;
+            letter-spacing: .22em;
+            text-transform: uppercase;
+        }
+
+        .heart {
+            display: inline-block;
+            margin-bottom: 17px;
+            color: var(--rose);
+            font-size: 45px;
+            filter: drop-shadow(0 5px 12px rgba(200, 75, 104, .26));
+            animation: heartbeat 1.8s ease-in-out infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            12% { transform: scale(1.13); }
+            24% { transform: scale(1); }
+            36% { transform: scale(1.08); }
+        }
+
+        h1 {
+            margin: 0;
+            color: var(--deep-rose);
+            font-size: clamp(2.6rem, 8vw, 4.7rem);
+            font-weight: 500;
+            letter-spacing: -.045em;
+            line-height: 1.03;
+        }
+
+        .subtitle {
+            margin: 21px auto 0;
+            max-width: 510px;
+            color: var(--muted);
+            font-size: clamp(1.05rem, 2.7vw, 1.25rem);
+            line-height: 1.75;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            width: min(290px, 80%);
+            margin: 29px auto;
+            color: #d89aaa;
+            font-size: 16px;
+        }
+        .divider::before, .divider::after {
+            height: 1px;
+            flex: 1;
+            content: '';
+            background: #ead0d4;
+        }
+
+        .letter {
+            max-width: 530px;
+            margin: 0 auto;
+            padding: 23px 25px;
+            border-radius: 18px;
+            background: rgba(255, 246, 244, .8);
+            color: #68424f;
+            font-size: 1.08rem;
+            line-height: 1.85;
+            text-align: left;
+        }
+        .letter p { margin: 0 0 13px; }
+        .letter p:last-child { margin-bottom: 0; }
+        .signoff {
+            margin-top: 17px !important;
+            color: var(--deep-rose);
+            font-style: italic;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
+
+        button {
+            min-height: 48px;
+            padding: 12px 21px;
+            border: 1px solid var(--rose);
+            border-radius: 999px;
+            color: white;
+            background: var(--rose);
+            font: 600 .95rem Arial, sans-serif;
+            cursor: pointer;
+            box-shadow: 0 6px 16px rgba(200, 75, 104, .18);
+            transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+        }
+        button:hover { transform: translateY(-2px); box-shadow: 0 9px 20px rgba(200, 75, 104, .25); }
+        button:focus-visible { outline: 3px solid #e9a9b8; outline-offset: 3px; }
+        button.secondary { color: var(--deep-rose); background: transparent; box-shadow: none; }
+        button.secondary:hover { background: #fff1f1; }
+
+        .surprise {
+            min-height: 30px;
+            margin: 17px 0 0;
+            color: var(--deep-rose);
+            font-size: 1.05rem;
+            font-style: italic;
+            line-height: 1.55;
+        }
+
+        .footer {
+            margin: 27px 0 0;
+            color: #a17e88;
+            font: .76rem Arial, sans-serif;
+            letter-spacing: .08em;
+        }
+
+        .burst {
+            position: fixed;
+            z-index: 5;
+            pointer-events: none;
+            font-size: 20px;
+            animation: burst 1s ease-out forwards;
+        }
+        @keyframes burst {
+            from { opacity: 1; transform: translate(0, 0) scale(.65) rotate(0); }
+            to { opacity: 0; transform: translate(var(--x), var(--y)) scale(1.4) rotate(25deg); }
+        }
+
+        @media (max-width: 480px) {
+            body { padding: 18px 12px; }
+            .app { border-radius: 23px; }
+            .letter { padding: 19px; font-size: 1rem; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+        }
+    </style>
+</head>
+<body>
+    <span class="sparkle" aria-hidden="true">♡</span>
+    <span class="sparkle" aria-hidden="true">✧</span>
+    <span class="sparkle" aria-hidden="true">♡</span>
+    <span class="sparkle" aria-hidden="true">✧</span>
+
+    <main class="app">
+        <p class="eyebrow">A little love, just for you</p>
+        <div class="heart" aria-hidden="true">♥</div>
+        <h1>My Farah</h1>
+        <p class="subtitle">My beautiful wife, my favorite person, and the best part of every day. I’d choose you in every lifetime.</p>
+
+        <div class="divider" aria-hidden="true">♡</div>
+
+        <section class="letter" aria-label="A love letter to Farah">
+            <p>My dearest Farah,</p>
+            <p>Thank you for filling my life with your warmth, your laughter, and the kind of love that makes even ordinary moments feel special. Home is wherever I get to share it with you.</p>
+            <p>I love you more than these words can hold—and I’ll keep finding new ways to show you, every day.</p>
+            <p class="signoff">Always yours ♥</p>
+        </section>
+
+        <div class="actions">
+            <button type="button" id="surpriseButton">A little reminder</button>
+            <button type="button" class="secondary" id="loveButton">Send you love ♥</button>
+        </div>
+        <p class="surprise" id="surpriseMessage" aria-live="polite"></p>
+        <p class="footer">MADE WITH LOVE · FOR FARAH</p>
+    </main>
+
+    <script>
+        const reminders = [
+            'You make my world softer, brighter, and so much happier.',
+            'In case you forgot today: you are cherished beyond measure.',
+            'My favorite place will always be right beside you.',
+            'I still get lucky just by calling you my wife.',
+            'Thank you for being you. I love every little thing about you.'
+        ];
+        let lastReminder = -1;
+
+        document.getElementById('surpriseButton').addEventListener('click', (event) => {
+            let next;
+            do { next = Math.floor(Math.random() * reminders.length); }
+            while (reminders.length > 1 && next === lastReminder);
+            lastReminder = next;
+            document.getElementById('surpriseMessage').textContent = reminders[next];
+            makeHearts(event.clientX, event.clientY);
+        });
+
+        document.getElementById('loveButton').addEventListener('click', (event) => {
+            document.getElementById('surpriseMessage').textContent = 'A whole sky full of kisses, sent straight to you. ♥';
+            makeHearts(event.clientX, event.clientY);
+        });
+
+        function makeHearts(x, y) {
+            const symbols = ['♥', '♡', '✧'];
+            for (let i = 0; i < 12; i++) {
+                const heart = document.createElement('span');
+                const angle = Math.random() * Math.PI * 2;
+                const distance = 45 + Math.random() * 105;
+                heart.className = 'burst';
+                heart.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+                heart.style.left = `${x}px`;
+                heart.style.top = `${y}px`;
+                heart.style.color = ['#c84b68', '#e78da0', '#a83256'][Math.floor(Math.random() * 3)];
+                heart.style.setProperty('--x', `${Math.cos(angle) * distance}px`);
+                heart.style.setProperty('--y', `${Math.sin(angle) * distance}px`);
+                document.body.appendChild(heart);
+                heart.addEventListener('animationend', () => heart.remove(), { once: true });
+            }
+        }
+    </script>
+</body>
+</html>
